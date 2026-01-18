@@ -2,7 +2,7 @@ import os
 import random
 import streamlit as st
 
-path = "icons"
+path = "sound_effects"
 sounds1 = os.listdir(path)
 sounds = [f"{path}/{i}" for i in sounds1]
 
@@ -12,17 +12,14 @@ if "sound" not in st.session_state:
     st.session_state.sound_answer = st.session_state.sound.replace("-", " ").replace("_", " ")[32:-4]
     st.session_state.typed = ""
     st.session_state.gave_up = False
-    st.session_state.played_once = False
+    st.session_state.played = False
 
 sound = st.session_state.sound
 sound_answer = st.session_state.sound_answer
 
-if "played_once" not in st.session_state:
-    st.session_state.played_once = False
-
-if st.session_state.played_once is False:
+if st.session_state.played is False:
     st.audio(sound)
-    st.session_state.played_once = True
+    st.session_state.played = True
 
 st.title("Surviv.io Sound Effect")
 
@@ -30,7 +27,7 @@ if st.button("Give Up"):
     st.session_state.gave_up = True
 
 if st.session_state.gave_up:
-    st.info(f"Answer: {sound_answer}")
+    st.info(sound_answer)
 
 sounds2 = [i[32:-4].replace("-", " ").replace("_", " ") for i in sounds]
 
