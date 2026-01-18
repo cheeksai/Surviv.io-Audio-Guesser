@@ -2,7 +2,7 @@ import os
 import random
 import streamlit as st
 
-path = "sound_effects"
+path = "icons"
 sounds1 = os.listdir(path)
 sounds = [f"{path}/{i}" for i in sounds1]
 
