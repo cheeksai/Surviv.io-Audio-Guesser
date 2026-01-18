@@ -3,7 +3,7 @@ import random
 import streamlit as st
 
 # Load sounds
-path = "sound_effects"
+path = "icons"
 sounds1 = os.listdir(path)
 
 # Build full paths
