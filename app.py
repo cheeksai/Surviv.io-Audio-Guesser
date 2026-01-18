@@ -58,7 +58,6 @@ if st.button("Submit Guess"):
             st.session_state.answer_name = names[idx]
             st.session_state.search = ""
             st.session_state.gave_up = False
-            st.session_state.played = False
             st.rerun()
     else:
         st.error("Incorrect")
