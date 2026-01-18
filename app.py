@@ -5,7 +5,7 @@ import streamlit as st
 # -----------------------------
 # Load sounds (same as your code)
 # -----------------------------
-path = "sound_effects"
+path = "icons"
 sounds1 = os.listdir(path)
 
 sounds = []
