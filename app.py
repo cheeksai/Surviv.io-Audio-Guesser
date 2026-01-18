@@ -46,16 +46,18 @@ if filtered_indices:
     filtered_names = [names[i] for i in filtered_indices]
     guess = st.selectbox("", filtered_names)
 else:
-    filtered_names = []
     guess = None
     st.write("No options to select")
 
 if st.button("Submit Guess"):
-    if guess is not None and guess == answer_name:
+    if guess == answer_name:
         st.success("Correct!")
-        st.balloons()
         if st.button("Play Again"):
-            st.session_state.clear()
+            idx = random.randint(0, len(sounds) - 1)
+            st.session_state.index = idx
+            st.session_state.answer_name = names[idx]
+            st.session_state.search = ""
+            st.session_state.gave_up = False
             st.rerun()
     else:
         st.error("Incorrect")
