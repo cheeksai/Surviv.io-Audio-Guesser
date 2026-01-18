@@ -2,7 +2,7 @@ import os
 import random
 import streamlit as st
 
-path = "icons"
+path = "sound_effects"
 sounds1 = os.listdir(path)
 sounds = [f"{path}/{i}" for i in sounds1]
 
@@ -10,7 +10,7 @@ if "sound" not in st.session_state:
     num = random.randint(0, len(sounds) - 1)
     st.session_state.sound = sounds[num]
     st.session_state.sound_answer = st.session_state.sound.replace("-", " ").replace("_", " ")[32:-4]
-    st.session_state.typed = ""
+    st.session_state.search = ""
     st.session_state.gave_up = False
     st.session_state.played = False
 
@@ -31,15 +31,15 @@ if st.session_state.gave_up:
 
 sounds2 = [i[32:-4].replace("-", " ").replace("_", " ") for i in sounds]
 
-typed = st.text_input("Search:", st.session_state.typed)
-st.session_state.typed = typed
+search = st.text_input("Search & Choose:", st.session_state.search)
+st.session_state.search = search
 
-if typed == "":
+if search == "":
     filtered = sounds2
 else:
-    filtered = [s for s in sounds2 if typed.lower() in s.lower()]
+    filtered = [s for s in sounds2 if search.lower() in s.lower()]
 
-guess = st.selectbox("Choose a sound:", filtered)
+guess = st.selectbox("", filtered)
 
 if st.button("Submit Guess"):
     if guess == sound_answer:
